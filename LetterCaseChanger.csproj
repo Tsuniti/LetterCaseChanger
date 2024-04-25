@@ -9,14 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="case.png" />
-    <None Remove="icon.png" />
-    <None Remove="icon1.png" />
-    <None Remove="icon3.png" />
-    <None Remove="icon4.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="icon.png" />
   </ItemGroup>
 

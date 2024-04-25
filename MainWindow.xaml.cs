@@ -16,11 +16,28 @@ namespace LetterCaseChanger
     /// </summary>
     public partial class MainWindow : Window
     {
-     
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void OnClick(object sender, RoutedEventArgs e)
+        {
+            if (TextBox.Text == string.Empty)
+                return;
+
+            if (ToUpperCase.IsChecked == true)
+            {
+                Clipboard.SetText(TextBox.Text.ToUpper());
+                return;
+            }
+            if (ToLowerCase.IsChecked == true)
+            {
+                Clipboard.SetText(TextBox.Text.ToLower());
+                return;
+            }
+
+        }
     }
 }
