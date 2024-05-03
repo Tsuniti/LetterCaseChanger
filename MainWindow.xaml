@@ -51,6 +51,7 @@
 
                                 <ThicknessAnimation Storyboard.TargetProperty="Margin" BeginTime="0:0:2" Duration="0:0:1" To="5,-90,0,-100"/>
                                 <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:2" Duration="0:0:1" To="0"/>
+                                
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -60,25 +61,18 @@
     </Window.Resources>
     
     <Border Padding="20, 20" MinHeight="370">
-        <StackPanel x:Name="MyGrid">
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>-->
-            <Label Grid.Row="0"
+        <StackPanel x:Name="MyPanel">
+            <Label
             Style="{StaticResource ResourceKey=MyLabel}"
             Content="Enter your text here:"
             />
 
-            <TextBox Grid.Row="1"
+            <TextBox
             x:Name="TextBox"
             Style="{StaticResource ResourceKey=MyTextBox}"
             />
 
-            <RadioButton Grid.Row="2"
+            <RadioButton
                 x:Name="ToUpperCase"
                 Style="{StaticResource ResourceKey=MyRadioButton}"
                 Margin="20,10, 20,0"
@@ -87,21 +81,20 @@
                 IsChecked="True"
                 />
 
-            <RadioButton Grid.Row="3"
+            <RadioButton
                 x:Name="ToLowerCase"
                 Style="{StaticResource ResourceKey=MyRadioButton}"
                 Margin="20,0, 20,0"
                 GroupName="LetterCase"
                 Content="To lower case"
                 />
-            <Button Grid.Row="4"
+            <Button
                 x:Name="ChangeLetterCase"
                 Margin="50,20,50,90"
                 Style="{StaticResource ResourceKey=MyButton}"
                 Content="Convert"
                 Click="OnClick"
                 />
-            <Controls:Notification Margin="0,-90,0,-100" />
         </StackPanel>
     </Border>
 </Window>

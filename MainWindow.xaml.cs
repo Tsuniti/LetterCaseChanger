@@ -5,6 +5,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -30,8 +31,8 @@ namespace LetterCaseChanger
                 var notification = new Notification("The text field cannot be empty", Brushes.Red);
                 notification.Margin = new Thickness(5,-90,0,-100);
                 notification.Style = (Style)FindResource("Notification");
-                Grid.SetRow(notification, 4);
-                MyGrid.Children.Add(notification);
+                MyPanel.Children.Add(notification);
+
                 return;
             }
 
@@ -41,8 +42,7 @@ namespace LetterCaseChanger
                 var notification = new Notification("The text was successfully converted to uppercase and copied to the clipboard", Brushes.Lime);
                 notification.Margin = new Thickness(5,-90,0,-100);
                 notification.Style = (Style)FindResource("Notification");
-                Grid.SetRow(notification, 4);
-                MyGrid.Children.Add(notification);
+                MyPanel.Children.Add(notification);
                 return;
                 
             }
@@ -52,11 +52,11 @@ namespace LetterCaseChanger
                 var notification = new Notification("The text was successfully converted to lowercase and copied to the clipboard", Brushes.Lime);
                 notification.Margin = new Thickness(5,-90,0,-100);
                 notification.Style = (Style)FindResource("Notification");
-                Grid.SetRow(notification, 4);
-                MyGrid.Children.Add(notification);
+                MyPanel.Children.Add(notification);
                 return;
             }
 
         }
+        
     }
 }
