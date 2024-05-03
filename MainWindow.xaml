@@ -4,64 +4,104 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LetterCaseChanger"
+        xmlns:Controls="clr-namespace:LetterCaseChanger.Controls"
         x:Class="LetterCaseChanger.MainWindow"
         mc:Ignorable="d"
         Title="Letter Case Changer"
         SizeToContent="Height"
         Width="600"
+        MinHeight="370"
         Background="#1e1e1e" Icon="/icon.png"
+        ResizeMode="NoResize"
         >
-    <Border Padding="20, 20">
-        <StackPanel>
+    <Window.Resources>
+        <Style x:Key="MyLabel" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="MyTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="Background" Value="#252526"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinHeight" Value="150"/>
+            <Setter Property="MaxHeight" Value="400"/>
+            <Setter Property="Margin" Value="20,10"/>
+        </Style>
+        <Style x:Key="MyRadioButton" TargetType="{x:Type RadioButton}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="#707070"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="MyButton" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#3d3d3d"/>
+            <Setter Property="BorderBrush" Value="#707070"/>
+        </Style>
+        <Style x:Key="Notification" TargetType="UserControl">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin"  Duration="0:0:1" To="5,-90,0,0"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" To="1"/>
 
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" BeginTime="0:0:2" Duration="0:0:1" To="5,-90,0,-100"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:2" Duration="0:0:1" To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Border Padding="20, 20" MinHeight="370">
+        <StackPanel x:Name="MyGrid">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>-->
             <Label Grid.Row="0"
-            Foreground="White"
-            FontSize="14"
+            Style="{StaticResource ResourceKey=MyLabel}"
             Content="Enter your text here:"
             />
 
-            <TextBox
+            <TextBox Grid.Row="1"
             x:Name="TextBox"
-            TextWrapping="Wrap"
-            AcceptsReturn="True"
-            Background="#252526"
-            Foreground="White"
-            FontSize="14"
-            MinHeight="150"
-            MaxHeight="400"
-            Margin="20,10"
+            Style="{StaticResource ResourceKey=MyTextBox}"
             />
 
-            <RadioButton
+            <RadioButton Grid.Row="2"
                 x:Name="ToUpperCase"
-                FontSize="14"
-                Background="#707070"
-                Foreground="White"
+                Style="{StaticResource ResourceKey=MyRadioButton}"
                 Margin="20,10, 20,0"
                 GroupName="LetterCase"
                 Content="To upper case"
                 IsChecked="True"
                 />
 
-            <RadioButton
+            <RadioButton Grid.Row="3"
                 x:Name="ToLowerCase"
-                FontSize="14"
-                Background="#707070"
-                Foreground="White"
+                Style="{StaticResource ResourceKey=MyRadioButton}"
                 Margin="20,0, 20,0"
                 GroupName="LetterCase"
                 Content="To lower case"
                 />
-            <Button
+            <Button Grid.Row="4"
                 x:Name="ChangeLetterCase"
-                Margin="50,20"
-                Height="30"
-                Foreground="White"
-                Background="#3d3d3d"
-                BorderBrush="#707070"
+                Margin="50,20,50,90"
+                Style="{StaticResource ResourceKey=MyButton}"
                 Content="Convert"
                 Click="OnClick"
                 />
+            <Controls:Notification Margin="0,-90,0,-100" />
         </StackPanel>
     </Border>
 </Window>
